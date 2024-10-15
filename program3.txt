@@ -1,0 +1,4 @@
+push 3;
+store x;
+push x;
+print ;

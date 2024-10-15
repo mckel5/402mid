@@ -1,0 +1,37 @@
+# Grammar with tokens and lookahead sets
+
+instr_list : ({NAME, PRINT, PUSH, POP, STORE, ASK, DUP, ADD, SUB, MUL, DIV,
+               EQU, LEQ, JUMPT, JUMPF, JUMP, STOP, NOOP} labeled_instr)*
+
+labeled_instr : {NAME} label_def instr
+              | {PRINT, PUSH, POP, STORE, ASK, DUP, ADD, SUB, MUL, DIV, EQU,
+                 LEQ, JUMPT, JUMPF, JUMP, STOP, NOOP} instr
+
+label_def : {NAME} label COLON
+
+instr : {PRINT} PRINT SEMI
+      | {PUSH} PUSH arg SEMI
+      | {POP} POP SEMI
+      | {STORE} STORE var SEMI
+      | {ASK} ASK SEMI
+      | {DUP} DUP SEMI
+      | {ADD} ADD SEMI
+      | {SUB} SUB SEMI
+      | {MUL} MUL SEMI
+      | {DIV} DIV SEMI
+      | {EQU} EQU SEMI
+      | {LEQ} LEQ SEMI
+      | {JUMPT} JUMPT label SEMI
+      | {JUMPF} JUMPF label SEMI
+      | {JUMP} JUMP label SEMI
+      | {STOP} STOP SEMI
+      | {NOOP} NOOP SEMI
+
+arg : {NUMBER} num
+    | {NAME} var
+
+label : {NAME} NAME
+
+var : {NAME} NAME
+
+num : {NUMBER} NUMBER

@@ -1,0 +1,35 @@
+# Original grammar
+
+instr_list : (labeled_instr)*
+
+labeled_instr : label_def instr
+              | instr
+
+label_def : label \:
+
+instr : print ;
+      | push arg ;
+      | pop ;
+      | store var ;
+      | ask ;
+      | dup ;
+      | add ;
+      | sub ;
+      | mul ;
+      | div ;
+      | equ ;
+      | leq ;
+      | jumpt label ;
+      | jumpf label ;
+      | jump label ;
+      | stop ;
+      | noop ;
+
+arg : num
+    | var
+
+label : <any valid label name>
+
+var : <any valid variable name>
+
+num : <any valid integer number>

@@ -1,0 +1,12 @@
+    ask ;
+    dup;
+    push 0;
+    leq;
+    jumpt NEG;
+    push 1 ;
+    print ;
+    stop ;
+NEG:
+    push 0 ;
+    print ;
+    stop ;

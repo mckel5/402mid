@@ -1,0 +1,10 @@
+//print out a sequence of integers
+    push 10;
+L1:
+    dup;
+    print;
+    push 1;
+    sub;
+    dup;
+    jumpt L1;
+    stop ;

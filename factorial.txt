@@ -1,0 +1,51 @@
+// Write a program in the stack machine language
+// that asks the user for an input value and then computes and prints the
+// factorial value of that input value. Your program should test to make
+// sure that the input value is a valid value for the factorial computation and
+// if not it should terminate its computation and print the offending value.
+// Definitions of the factorial computation can be found here:
+// http://en.wikipedia.org/wiki/Factorial
+
+    // ask for number from user
+    ask;
+    dup;
+    store n;
+    store res;
+    // test if number is valid (0 <= n)
+    push 0;
+    push n;
+    leq;
+    jumpt test_zero_or_one;
+    // return number and halt if invalid
+    push n;
+    print;
+    stop;
+test_zero_or_one:
+    // if n == 0 or n == 1, print 1; else perform factorial calculation
+    push n;
+    push 1;
+    leq;
+    jumpf factorial;
+    push 1;
+    print;
+    stop;
+factorial:
+    // get next number to multiply result by (n - 1)
+    push n;
+    push 1;
+    sub;
+    dup;
+    store n;
+    // multiply result by next number in factorial sequence
+    push res;
+    mul;
+    store res;
+    // check if sequence has been exhausted
+    push n;
+    push 2;
+    leq;
+    // if not, repeat
+    jumpf factorial;
+    // if so, print result and terminate
+    push res;
+    print;
